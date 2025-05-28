@@ -10,10 +10,12 @@ const Footer = () => {
           {/* Logo & Tagline */}
           <div className="lg:col-span-2">
             <div className="mb-6">
-              <h3 className="text-3xl md:text-4xl font-display font-black text-white tracking-widest">
-                KBK PRESTIGE
-              </h3>
-              <div className="w-16 h-px bg-white mt-2"></div>
+              <img
+                src="/logo.png"
+                alt="KBK Prestige Logo"
+                className="w-24 md:w-32 object-contain"
+              />
+              <div className="w-16 h-px bg-white mt-4"></div>
             </div>
             <p className="text-white/70 text-lg leading-relaxed max-w-md mb-6">
               Service de lavage automobile mobile haut de gamme. 
@@ -25,6 +27,7 @@ const Footer = () => {
               </button>
             </Link>
           </div>
+
 
           {/* Contact Quick */}
           <div>
