@@ -33,7 +33,7 @@ const Hero = () => {
         {/* Main Title */}
         <div className="space-y-8 animate-fade-in">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-sans font-light text-white tracking-wider leading-tight">
-            Prenium Car Wash | Service mobile
+          Lavage Automobile de Luxe, Chez Vous.
           </h1>
           
           <h2 className="text-xl md:text-2xl font-sans font-light text-white/90 tracking-wide leading-relaxed max-w-3xl mx-auto">

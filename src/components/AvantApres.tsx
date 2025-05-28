@@ -47,8 +47,8 @@ const AvantApres = () => {
   const comparisons = [
     {
       id: 1,
-      before: "https://images.unsplash.com/photo-1486326658981-ed68abe5868e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3",
-      after: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3",
+      before: "/ba/before.png",
+      after: "/ba/after.png",
       alt: "Transformation BMW"
     }
   ];

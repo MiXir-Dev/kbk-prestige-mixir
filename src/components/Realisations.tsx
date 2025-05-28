@@ -15,38 +15,33 @@ const Realisations = () => {
   const realisations = [
     {
       id: 1,
-      image: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3",
+      image: "/services/finition.png",
       alt: "Chevrolet Corvette C8 Stringray 2022"
     },
     {
       id: 2,
-      image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3",
+      image: "/realisations/cybertruck.gif",
       alt: "Tesla CyberTruck"
     },
     {
       id: 3,
-      image: "https://images.unsplash.com/photo-1609521263047-f8f205293f24?q=80&w=2026&auto=format&fit=crop&ixlib=rb-4.0.3",
+      image: "/realisations/Q8.gif",
       alt: "AUDI Q8 2025"
     },
     {
       id: 4,
-      image: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.0.3",
+      image: "/realisations/G63.gif",
       alt: "Mercedes Benz G63 2020"
     },
     {
       id: 5,
-      image: "https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3",
+      image: "/realisations/GLE450.gif",
       alt: "Mercedes Benz GLE 450 2024"
     },
     {
       id: 6,
-      image: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.0.3",
+      image: "/realisations/GT53.gif",
       alt: "Mercedes-Benz GT 53 2023"
-    },
-    {
-      id: 7,
-      image: "https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3",
-      alt: "Mercedes Benz GLE 450 2024"
     }
   ];
 
@@ -91,6 +86,9 @@ const Realisations = () => {
                       src={realisation.image}
                       alt={realisation.alt}
                       className="w-full h-80 object-cover transition-all duration-500"
+                      loading="lazy"
+                      decoding="async"
+                      fetchPriority="low"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="absolute bottom-4 left-4 right-4">
