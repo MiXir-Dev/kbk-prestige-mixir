@@ -1,4 +1,3 @@
-
 import { Star, Quote } from "lucide-react";
 import { useState, useEffect } from "react";
 
@@ -12,7 +11,7 @@ const Testimonials = () => {
       author: "Michel Tremblay",
       position: "Directeur Général",
       company: "Construction MTL",
-      logo: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?q=80&w=150&auto=format&fit=crop",
+      logo: "https://images.unsplash.com/photo-1605559424843-2665dc80f6fd?q=80&w=800", // voiture
       rating: 5,
       location: "Repentigny"
     },
@@ -22,7 +21,7 @@ const Testimonials = () => {
       author: "Sarah Dubois",
       position: "Avocate",
       company: "Cabinet Dubois & Associés",
-      logo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop",
+      logo: "https://images.unsplash.com/photo-1549924231-f129b911e442?q=80&w=800", // voiture
       rating: 5,
       location: "Mascouche"
     },
@@ -32,7 +31,7 @@ const Testimonials = () => {
       author: "Jean-François Leblanc",
       position: "Propriétaire",
       company: "Garage Elite",
-      logo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=150&auto=format&fit=crop",
+      logo: "https://images.unsplash.com/photo-1617082434087-4147dc4d45d2?q=80&w=800", // voiture
       rating: 5,
       location: "Terrebonne"
     },
@@ -42,7 +41,7 @@ const Testimonials = () => {
       author: "Marie-Claire Gagnon",
       position: "Gestionnaire de Flotte",
       company: "Prestige Auto Groupe",
-      logo: "https://images.unsplash.com/photo-1494790108755-2616b612b786?q=80&w=150&auto=format&fit=crop",
+      logo: "https://images.unsplash.com/photo-1571607381628-1f8db384bc94?q=80&w=800", // voiture
       rating: 5,
       location: "L'Assomption"
     }
@@ -74,48 +73,44 @@ const Testimonials = () => {
 
         {/* Main Testimonial Display */}
         <div className="relative max-w-5xl mx-auto mb-16">
-          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-12 relative overflow-hidden">
-            {/* Quote Icon */}
-            <Quote className="absolute top-6 left-6 w-12 h-12 text-white/20" />
+          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-10 relative overflow-hidden flex flex-col md:flex-row items-center md:items-start gap-10">
             
-            {/* Content */}
-            <div className="relative z-10">
-              <div className="flex items-center justify-center mb-6">
+            {/* Text side */}
+            <div className="flex-1">
+              <div className="flex items-center mb-4">
                 {[...Array(testimonials[activeTestimonial].rating)].map((_, i) => (
-                  <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" />
+                  <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
                 ))}
               </div>
-              
-              <blockquote className="text-xl md:text-2xl lg:text-3xl text-white font-light leading-relaxed text-center mb-8 italic">
+
+              <Quote className="w-8 h-8 text-white/20 mb-4" />
+              <blockquote className="text-lg md:text-xl lg:text-2xl text-white font-light leading-relaxed italic mb-6">
                 "{testimonials[activeTestimonial].text}"
               </blockquote>
-              
-              <div className="flex items-center justify-center space-x-6">
-                <img
-                  src={testimonials[activeTestimonial].logo}
-                  alt={testimonials[activeTestimonial].company}
-                  className="w-16 h-16 rounded-full object-cover border-2 border-white/20"
-                />
-                <div className="text-center">
-                  <h4 className="text-white font-semibold text-lg">
-                    {testimonials[activeTestimonial].author}
-                  </h4>
-                  <p className="text-white/70 text-sm">
-                    {testimonials[activeTestimonial].position}
-                  </p>
-                  <p className="text-white/60 text-sm font-light">
-                    {testimonials[activeTestimonial].company} • {testimonials[activeTestimonial].location}
-                  </p>
-                </div>
+
+              <div>
+                <h4 className="text-white font-semibold text-lg">
+                  {testimonials[activeTestimonial].author}
+                </h4>
+                <p className="text-white/70 text-sm">{testimonials[activeTestimonial].position}</p>
+                <p className="text-white/60 text-sm font-light">
+                  {testimonials[activeTestimonial].company} • {testimonials[activeTestimonial].location}
+                </p>
               </div>
             </div>
 
-            {/* Background Decoration */}
-            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-50"></div>
+            {/* Car photo side */}
+            <div className="w-full md:w-1/3">
+              <img
+                src={testimonials[activeTestimonial].logo}
+                alt="Photo du véhicule"
+                className="w-full h-64 object-cover rounded-xl shadow-md border border-white/10"
+              />
+            </div>
           </div>
         </div>
 
-        {/* Testimonial Navigation */}
+        {/* Navigation Dots */}
         <div className="flex justify-center space-x-3 mb-12">
           {testimonials.map((_, index) => (
             <button
@@ -130,7 +125,7 @@ const Testimonials = () => {
           ))}
         </div>
 
-        {/* Company Logos Strip */}
+        {/* Logos Strip */}
         <div className="border-t border-white/10 pt-12">
           <p className="text-center text-white/60 text-sm uppercase tracking-wide mb-8">
             Ils nous font confiance
@@ -147,7 +142,7 @@ const Testimonials = () => {
                 <img
                   src={testimonial.logo}
                   alt={testimonial.company}
-                  className="w-20 h-20 rounded-full object-cover filter grayscale hover:grayscale-0 transition-all duration-300"
+                  className="w-20 h-20 object-cover rounded-full filter grayscale hover:grayscale-0 transition-all duration-300"
                 />
               </div>
             ))}
