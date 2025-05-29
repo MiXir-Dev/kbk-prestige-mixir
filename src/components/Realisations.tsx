@@ -62,17 +62,9 @@ const Realisations = () => {
     return () => api.off("select", handleSelect);
   }, [api]);
 
-  // Si on change de slide, on stoppe la vidéo
-  useEffect(() => {
-    if (playingIndex !== null && playingIndex !== activeIndex) {
-      setPlayingIndex(null);
-    }
-  }, [activeIndex, playingIndex]);
-
   const handleItemClick = (index: number, hasVideo: boolean) => {
     console.log('Clicked item:', index, 'Has video:', hasVideo);
     if (hasVideo) {
-      // Si on clique sur la même vidéo qui joue, on l'arrête
       if (playingIndex === index) {
         setPlayingIndex(null);
       } else {
