@@ -77,7 +77,22 @@ const AvantApres = () => {
                 onMouseUp={handleMouseUp}
                 onMouseLeave={handleMouseUp}
                 onClick={handleClick}
+                onTouchStart={(e) => {
+                  setIsDragging(true);
+                }}
+                onTouchMove={(e) => {
+                  if (!isDragging || !containerRef.current) return;
+                  const touch = e.touches[0];
+                  const rect = containerRef.current.getBoundingClientRect();
+                  const x = touch.clientX - rect.left;
+                  const percentage = (x / rect.width) * 100;
+                  setSliderValue(Math.max(0, Math.min(100, percentage)));
+                }}
+                onTouchEnd={() => {
+                  setIsDragging(false);
+                }}
               >
+
                 {/* Image Après (fond) */}
                 <img
                   src={comparison.after}
