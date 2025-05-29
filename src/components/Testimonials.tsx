@@ -9,8 +9,8 @@ const Testimonials = () => {
     {
       id: 1,
       text: "Mon pickup brille comme jamais. Ils sont venus direct chez moi à L’Assomption, super pratique.",
-      logo: "/testimonials/pickup.png",
       author: "Patrick B.",
+      logo: "/testimonials/pickup.png",
       rating: 5,
       location: "L'Assomption"
     },
@@ -116,10 +116,13 @@ const Testimonials = () => {
                 "{testimonials[activeTestimonial].text}"
               </blockquote>
 
-              <div>
+              <div className="flex items-center space-x-2">
                 <h4 className="text-white font-semibold text-lg">
                   {testimonials[activeTestimonial].author}
                 </h4>
+                <p className="text-white/60 text-sm font-light">
+                  {`• ${testimonials[activeTestimonial].location}`}
+                </p>
               </div>
             </div>
 
@@ -167,7 +170,7 @@ const Testimonials = () => {
               >
                 <img
                   src={testimonial.logo}
-                  alt={"Client"}
+                  alt={testimonial.company || "Client"}
                   className="w-20 h-20 object-cover rounded-full filter grayscale hover:grayscale-0 transition-all duration-300"
                   loading="lazy"
                 />
