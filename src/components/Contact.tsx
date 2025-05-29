@@ -90,7 +90,8 @@ const Contact = () => {
               <div className="w-full h-[300px] sm:h-[400px]">
                 <iframe
                   title="Zone desservie"
-                  src="https://www.google.com/maps/d/u/0/embed?mid=1OqiuRwfNM-VP0bRBJ3flz-zsKy8dDcI&ehbc=2E312F"                  width="100%"
+                  src="https://www.google.com/maps/d/u/0/embed?mid=1OqiuRwfNM-VP0bRBJ3flz-zsKy8dDcI&ehbc=2E312F&noprof=1"
+                  width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen

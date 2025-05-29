@@ -1,52 +1,85 @@
 import { Star, Quote } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const Testimonials = () => {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const testimonials = [
     {
       id: 1,
-      text: "Service exceptionnel ! Mon véhicule n'a jamais été aussi propre. L'équipe de KBK Prestige est professionnelle et ponctuelle.",
-      author: "Michel Tremblay",
-      position: "Directeur Général",
-      company: "Construction MTL",
-      logo: "https://images.unsplash.com/photo-1605559424843-2665dc80f6fd?q=80&w=800", // voiture
+      text: "Mon pickup brille comme jamais. Ils sont venus direct chez moi à L’Assomption, super pratique.",
+      author: "Patrick B.",
+      company: null,
+      logo: "/testimonials/pickup.png",
       rating: 5,
-      location: "Repentigny"
+      location: "L'Assomption"
     },
     {
       id: 2,
-      text: "Incroyable transformation ! Ils ont redonné vie à ma BMW. Le service mobile est parfait pour mon horaire chargé.",
+      text: "Ma Tesla a l’air sortie du concessionnaire. J’ai même pas eu à bouger de chez moi à Mascouche.",
       author: "Sarah Dubois",
-      position: "Avocate",
       company: "Cabinet Dubois & Associés",
-      logo: "https://images.unsplash.com/photo-1549924231-f129b911e442?q=80&w=800", // voiture
+      logo: "/testimonials/tesla.png",
       rating: 5,
       location: "Mascouche"
     },
     {
       id: 3,
-      text: "Qualité premium garantie ! Chaque détail compte chez KBK Prestige. Je recommande sans hésitation.",
-      author: "Jean-François Leblanc",
-      position: "Propriétaire",
-      company: "Garage Elite",
-      logo: "https://images.unsplash.com/photo-1617082434087-4147dc4d45d2?q=80&w=800", // voiture
+      text: "Top service. Mon VUS est clean comme jamais, prêt pour le week-end. Les gars sont pros et rapides.",
+      author: "Michel Tremblay",
+      company: "Construction MTL",
+      logo: "/testimonials/volks.png",
       rating: 5,
-      location: "Terrebonne"
+      location: "Repentigny"
     },
     {
       id: 4,
-      text: "Service impeccable pour notre flotte de véhicules de luxe. KBK Prestige comprend nos exigences élevées.",
-      author: "Marie-Claire Gagnon",
-      position: "Gestionnaire de Flotte",
-      company: "Prestige Auto Groupe",
-      logo: "https://images.unsplash.com/photo-1571607381628-1f8db384bc94?q=80&w=800", // voiture
+      text: "Toujours nickel. Ils s’occupent de mes chars pendant que je bosse. J’ai rien à faire, j’adore.",
+      author: "Jean-François Leblanc",
+      company: "Garage Elite",
+      logo: "/testimonials/toyota.png",
       rating: 5,
-      location: "L'Assomption"
+      location: "Terrebonne"
     }
   ];
 
+  // Swipe gesture
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    let startX = 0;
+
+    const handleTouchStart = (e: TouchEvent) => {
+      startX = e.touches[0].clientX;
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      const endX = e.changedTouches[0].clientX;
+      const deltaX = endX - startX;
+
+      if (Math.abs(deltaX) > 50) {
+        if (deltaX > 0) {
+          setActiveTestimonial((prev) =>
+            prev === 0 ? testimonials.length - 1 : prev - 1
+          );
+        } else {
+          setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
+        }
+      }
+    };
+
+    container.addEventListener("touchstart", handleTouchStart);
+    container.addEventListener("touchend", handleTouchEnd);
+
+    return () => {
+      container.removeEventListener("touchstart", handleTouchStart);
+      container.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, [testimonials.length]);
+
+  // Auto-scroll every 6s
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
@@ -72,9 +105,8 @@ const Testimonials = () => {
         </div>
 
         {/* Main Testimonial Display */}
-        <div className="relative max-w-5xl mx-auto mb-16">
-          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-10 relative overflow-hidden flex flex-col md:flex-row items-center md:items-start gap-10">
-            
+        <div ref={containerRef} className="relative max-w-5xl mx-auto mb-16">
+          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-10 relative overflow-hidden flex flex-col md:flex-row items-center md:items-start gap-10 transition-all duration-500">
             {/* Text side */}
             <div className="flex-1">
               <div className="flex items-center mb-4">
@@ -92,9 +124,11 @@ const Testimonials = () => {
                 <h4 className="text-white font-semibold text-lg">
                   {testimonials[activeTestimonial].author}
                 </h4>
-                <p className="text-white/70 text-sm">{testimonials[activeTestimonial].position}</p>
                 <p className="text-white/60 text-sm font-light">
-                  {testimonials[activeTestimonial].company} • {testimonials[activeTestimonial].location}
+                  {testimonials[activeTestimonial].company
+                    ? `${testimonials[activeTestimonial].company} • `
+                    : ""}
+                  {testimonials[activeTestimonial].location}
                 </p>
               </div>
             </div>
@@ -118,8 +152,8 @@ const Testimonials = () => {
               onClick={() => handleTestimonialChange(index)}
               className={`w-4 h-4 rounded-full transition-all duration-300 ${
                 index === activeTestimonial
-                  ? 'bg-white scale-125'
-                  : 'bg-white/30 hover:bg-white/50'
+                  ? "bg-white scale-125"
+                  : "bg-white/30 hover:bg-white/50"
               }`}
             />
           ))}
@@ -135,14 +169,17 @@ const Testimonials = () => {
               <div
                 key={testimonial.id}
                 className={`transition-all duration-300 cursor-pointer ${
-                  index === activeTestimonial ? 'opacity-100 scale-110' : 'opacity-40 hover:opacity-70'
+                  index === activeTestimonial
+                    ? "opacity-100 scale-110"
+                    : "opacity-40 hover:opacity-70"
                 }`}
                 onClick={() => handleTestimonialChange(index)}
               >
                 <img
                   src={testimonial.logo}
-                  alt={testimonial.company}
+                  alt={testimonial.company || "Client"}
                   className="w-20 h-20 object-cover rounded-full filter grayscale hover:grayscale-0 transition-all duration-300"
+                  loading="lazy"
                 />
               </div>
             ))}
