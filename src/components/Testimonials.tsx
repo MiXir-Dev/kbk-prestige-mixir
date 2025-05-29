@@ -26,7 +26,7 @@ const Testimonials = () => {
     },
     {
       id: 3,
-      text: "Top service. Mon VUS est clean comme jamais, prêt pour le week-end. Les gars sont pros et rapides.",
+      text: "Top service. Mon SUV est clean comme jamais, prêt pour le week-end. Les gars sont pros et rapides.",
       author: "Michel Tremblay",
       company: "Construction MTL",
       logo: "/testimonials/volks.png",
