@@ -75,12 +75,12 @@ const About = () => {
             Intervention rapide dans la région de Lanaudière
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            {zones.map((zone, i) => (
-              <div className="bg-white/10 text-white text-sm py-2 px-4 rounded-full flex items-center gap-2 min-w-[160px] justify-start sm:justify-center text-left sm:text-center">
-                <MapPin className="w-4 h-4" />
-                {zone}
-              </div>
-            ))}
+          {zones.map((zone) => (
+            <div key={zone} className="bg-white/10 text-white text-sm py-2 px-4 rounded-full flex items-center gap-2 min-w-[160px] justify-start sm:justify-center text-left sm:text-center">
+              <MapPin className="w-4 h-4" />
+              {zone}
+            </div>
+          ))}
           </div>
         </div>
 
