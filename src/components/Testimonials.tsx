@@ -9,9 +9,8 @@ const Testimonials = () => {
     {
       id: 1,
       text: "Mon pickup brille comme jamais. Ils sont venus direct chez moi à L’Assomption, super pratique.",
-      author: "Patrick B.",
-      company: null,
       logo: "/testimonials/pickup.png",
+      author: "Patrick B.",
       rating: 5,
       location: "L'Assomption"
     },
@@ -19,7 +18,6 @@ const Testimonials = () => {
       id: 2,
       text: "Ma Tesla a l’air sortie du concessionnaire. J’ai même pas eu à bouger de chez moi à Mascouche.",
       author: "Sarah Dubois",
-      company: "Cabinet Dubois & Associés",
       logo: "/testimonials/tesla.png",
       rating: 5,
       location: "Mascouche"
@@ -28,7 +26,6 @@ const Testimonials = () => {
       id: 3,
       text: "Top service. Mon SUV est clean comme jamais, prêt pour le week-end. Les gars sont pros et rapides.",
       author: "Michel Tremblay",
-      company: "Construction MTL",
       logo: "/testimonials/volks.png",
       rating: 5,
       location: "Repentigny"
@@ -37,7 +34,6 @@ const Testimonials = () => {
       id: 4,
       text: "Toujours nickel. Ils s’occupent de mes chars pendant que je bosse. J’ai rien à faire, j’adore.",
       author: "Jean-François Leblanc",
-      company: "Garage Elite",
       logo: "/testimonials/toyota.png",
       rating: 5,
       location: "Terrebonne"
@@ -124,12 +120,6 @@ const Testimonials = () => {
                 <h4 className="text-white font-semibold text-lg">
                   {testimonials[activeTestimonial].author}
                 </h4>
-                <p className="text-white/60 text-sm font-light">
-                  {testimonials[activeTestimonial].company
-                    ? `${testimonials[activeTestimonial].company} • `
-                    : ""}
-                  {testimonials[activeTestimonial].location}
-                </p>
               </div>
             </div>
 
@@ -177,7 +167,7 @@ const Testimonials = () => {
               >
                 <img
                   src={testimonial.logo}
-                  alt={testimonial.company || "Client"}
+                  alt={"Client"}
                   className="w-20 h-20 object-cover rounded-full filter grayscale hover:grayscale-0 transition-all duration-300"
                   loading="lazy"
                 />
